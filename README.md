@@ -224,3 +224,9 @@ Thanks
 We're thrilled about Ionic React, and can't wait to see what you build with it. We've got a lot planned for Ionic React, so let us know in the comments below what type of content you'd like to see us cover. You can also reach out on Twitter by following us @ionicframework!
 
 Until next time.
+
+## Getting started guide : https://ionicframework.com/docs/react/your-first-app
+
+## Docs : https://ionicframework.com/docs/
+
+## Ionic UI Components : https://ionicframework.com/docs/components
