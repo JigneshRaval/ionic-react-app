@@ -93,11 +93,11 @@ ionic start my-react-app
 
 The CLI will guide you through the setup process by first asking a couple of questions. The first of which is what framework you would like to use, select React (of course!).
 
-!(https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-pick-framework.png)
-
-[logo]: https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-pick-framework.png "Logo Title Text 2"
+![Alt Text](https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-pick-framework.png)
 
 Next, the CLI will ask which starter template you would like to use. We ship a few different starters to help get you up and running quickly. Go ahead and choose tabs for this demo:
+
+![Alt Text](https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-pick-starter.png)
 
 The CLI will now create your app and install all the dependencies. Once it is done, go into the directory and launch the app:
 
@@ -108,6 +108,8 @@ ionic serve
 Under the covers, the ionic serve command uses the Create React App (CRA) project to compile your app, start a dev server, and open your app in a new browser window.
 
 Once done, you will see your starter app up and running:
+
+![Alt Text](https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-tab1-screen.png)
 
 Next, let's take a tour of what a stock Ionic React app consists of.
 
@@ -124,6 +126,8 @@ At the top, we have the typical React and React Router imports, and then a serie
 Next, we import a series of core CSS files. After those, there is also a variables.css file, which you can use to customize the theme of your app. For more info on theming your app, check out our doc on the subject.
 
 Next, we have the main App component. Notice that in the starters, we are using 100% functional components. We are fans of this approach, but if you prefer class-based components, those work great as well.
+
+![Alt Text](https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-app-code.png)
 
 Each Ionic app starts with the IonApp component, which is the base container, and helps set up the screen to work great on both mobile and desktop. Next, the IonReactRouter component is a wrapper around the React Router library's BrowserRouter component. To do the native-like page transitions and to maintain the state of the pages as you browse through your app, we augment React Router with some additional functionality. Visit our Navigation & Routing guide for more info on how routing works in Ionic React.
 
@@ -142,9 +146,9 @@ First, let's update the tab bar in App.tsx to show a new label and icon:
 </IonTabButton>
 ```
 
-    The people icon is imported from 'ionicons/icons'
+> The `people` icon is imported from 'ionicons/icons'
 
-Open up Tab3.tsx, and replace the contents of the file with:
+Open up `Tab3.tsx`, and replace the contents of the file with:
 
 ```r
 import { IonAvatar, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
@@ -211,6 +215,8 @@ We provide a function to the useIonViewWillEnter hook that will fire that will c
 In the JSX, we have an 'IonList' component, which contains an EmployeeItem for each of the people. We separate out the EmployeeItem into its own component (defined a bit farther down).
 
 With the updates to Tab3, we can now get a list of employees:
+
+![Alt Text](https://ionicframework.com/blog/wp-content/uploads/2019/10/ionic-react-employee-screen.png)
 
 That is the basics on getting up and running with an Ionic React app! For a more in-depth tutorial, check out our getting started guide.
 Thanks
