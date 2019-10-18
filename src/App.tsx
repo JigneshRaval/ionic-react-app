@@ -35,7 +35,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-import { IonNav, IonMenu, IonHeader, IonButton, IonToolbar, IonTitle, IonSplitPane, IonContent, IonList, IonItem, NavContext } from '@ionic/react';
+import { IonNav, IonHeader, IonButton, IonToolbar, IonTitle, IonContent, IonItem } from '@ionic/react';
 import { CardExample } from './components/CardComponent';
 
 const test = () => (

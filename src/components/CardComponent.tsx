@@ -1,5 +1,5 @@
 import React from 'react';
-import { pin, wifi, wine, warning, walk } from 'ionicons/icons';
+import { pin, wine, warning, walk } from 'ionicons/icons';
 import {
     IonButton,
     IonCard,
