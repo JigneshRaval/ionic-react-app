@@ -35,9 +35,60 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { IonNav, IonMenu, IonHeader, IonButton, IonToolbar, IonTitle, IonSplitPane, IonContent, IonList, IonItem, NavContext } from '@ionic/react';
+import { CardExample } from './components/CardComponent';
+
+const test = () => (
+    <React.Fragment>
+        <IonHeader translucent>
+            <IonToolbar>
+                <IonButton slot="start">Back</IonButton>
+                <IonTitle>Test</IonTitle>
+            </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen class="ion-padding">
+            <p>Hi</p>
+        </IonContent>
+    </React.Fragment>
+);
+
+const navHome = (props: any) => (
+    <React.Fragment>
+        <IonHeader translucent>
+            <IonToolbar>
+                <IonTitle>Test</IonTitle>
+            </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen class="ion-padding">
+            <IonItem key={Math.random()}>
+                <IonLabel>GL</IonLabel>
+            </IonItem>
+        </IonContent>
+    </React.Fragment>
+);
+
 const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
+
+            <IonNav></IonNav>
+
+            <IonHeader translucent>
+                <IonToolbar>
+                    <IonTitle>Test</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            <IonContent fullscreen class="ion-padding">
+                <IonItem key={Math.random()}>
+                    <IonLabel>GL</IonLabel>
+                </IonItem>
+            </IonContent>
+
+            <IonContent>
+                <CardExample />
+            </IonContent>
+
             <IonTabs>
                 <IonRouterOutlet>
                     <Route path="/tab1" component={Tab1} exact={true} />
