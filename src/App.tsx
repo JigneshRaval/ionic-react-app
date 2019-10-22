@@ -18,13 +18,16 @@ import Details from './pages/Details';
 
 import './vendor';
 
+import { NavExample } from './components/NavExample'
+
 const App: React.FC = (props) => {
 
     return (
         <IonApp>
+            <NavExample />
             <IonReactRouter>
 
-                <IonTabs>
+                {/* <IonTabs>
                     <IonRouterOutlet>
                         <Route path="/tab1" component={Tab1} exact={true} />
                         <Route path="/tab2" component={Tab2} exact={true} />
@@ -47,7 +50,7 @@ const App: React.FC = (props) => {
                             <IonLabel>Tab Three</IonLabel>
                         </IonTabButton>
                     </IonTabBar>
-                </IonTabs>
+                </IonTabs> */}
 
             </IonReactRouter>
         </IonApp>
