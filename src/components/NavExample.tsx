@@ -11,7 +11,7 @@ import {
     IonItem,
     IonButton,
     IonIcon,
-    IonLabel
+    IonLabel,
 } from '@ionic/react';
 
 const techs = [
@@ -71,9 +71,7 @@ const techs = [
     },
 ];
 
-export const NavHome = (props: any) => {
-
-
+class NavHome extends React.Component<any, any> {
 
     /*  const showDetail = (title: any): void => {
          // Need help to push item on click of list
@@ -83,27 +81,33 @@ export const NavHome = (props: any) => {
              elemRef.current.push(NavDetail, { tech });
          }
      }; */
+    constructor(props:any) {
+        super(props);
+    }
 
-    return (
-        <React.Fragment>
-            <IonHeader translucent>
-                <IonToolbar>
-                    <IonTitle>Test 111</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+    render() {
+        return (
+            <React.Fragment>
+                <IonHeader translucent>
+                    <IonToolbar>
+                        <IonTitle>Test 111</IonTitle>
+                    </IonToolbar>
+                </IonHeader>
 
-            <IonContent fullscreen class="ion-padding">
-                <IonList>
-                    {techs.map(tech =>
-                        <IonItem button key={Math.random()} onClick={() => props.onClick(tech.title)}>
-                            {/* <IonIcon slot="start" icon={{ 'logo-'{ tech.icon } }}></IonIcon> */}
-                            <IonLabel>{tech.title}</IonLabel>
-                        </IonItem>
-                    )};
+                <IonContent fullscreen class="ion-padding">
+                    <IonList>
+                        {techs.map(tech =>
+                            <IonItem button key={Math.random()} onClick={() => this.props.onClick(tech.title)}>
+                                {/* <IonIcon slot="start" icon={{ 'logo-'{ tech.icon } }}></IonIcon> */}
+                                <IonLabel>{tech.title}</IonLabel>
+                            </IonItem>
+                        )};
                 </IonList>
-            </IonContent>
-        </React.Fragment>
-    )
+                </IonContent>
+            </React.Fragment>
+        )
+    }
+
 };
 
 export const NavDetail = (props: any) => (
@@ -123,26 +127,26 @@ export const NavDetail = (props: any) => (
 export const NavExample = () => {
     const elemRef = useRef<any>(null);
 
+
     const handleClick = (title: string) => {
         // Need help to push item on click of list
-        console.log('Show Details : ', title, elemRef);
+        console.log('Show Details : ', title, elemRef, elemRef.current);
         const tech = techs.find(tech => tech.title === title);
         if (elemRef && elemRef.current) {
-            elemRef.current.getActive()
+            /* elemRef.current.getActive()
                 .then((res: any) => console.log(res))
             elemRef.current.push(NavDetail, { tech })
-                .then((res: any) => console.log('Res : ', res))
+                .then((res: any) => console.log('Res : ', res)) */
         }
     }
 
     useEffect(() => {
-        elemRef.current.setRoot(NavHome);
+        // elemRef.current.setRoot(NavHome);
     }, []);
 
     return (
         <React.Fragment>
             <IonNav ref={elemRef} root={() => <NavHome onClick={handleClick} />}></IonNav>
-            <NavHome onClick={handleClick} />
         </React.Fragment>
     )
 }

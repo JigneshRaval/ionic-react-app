@@ -18,20 +18,24 @@ import Details from './pages/Details';
 
 import './vendor';
 
-import { NavExample } from './components/NavExample'
+// import { NavExample } from './components/NavExample';
+import { MainMenu } from './components/MainMenu';
+import  LeaveDetails  from './components/LeaveDetails';
 
 const App: React.FC = (props) => {
 
     return (
         <IonApp>
-            <NavExample />
             <IonReactRouter>
 
-                {/* <IonTabs>
+                <MainMenu />
+
+                <IonTabs>
                     <IonRouterOutlet>
                         <Route path="/tab1" component={Tab1} exact={true} />
                         <Route path="/tab2" component={Tab2} exact={true} />
-                        <Route path="/tab2/details" component={Details} />
+                        {/* <Route path="/tab2/details" component={Details} /> */}
+                        <Route path="/details/:leaveType" component={LeaveDetails} />
                         <Route path="/tab3" component={Tab3} />
                         <Route exact path="/" render={() => <Redirect to="/tab1" />} />
                     </IonRouterOutlet>
@@ -50,7 +54,7 @@ const App: React.FC = (props) => {
                             <IonLabel>Tab Three</IonLabel>
                         </IonTabButton>
                     </IonTabBar>
-                </IonTabs> */}
+                </IonTabs>
 
             </IonReactRouter>
         </IonApp>

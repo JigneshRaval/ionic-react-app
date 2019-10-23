@@ -1,33 +1,22 @@
-import React, { useRef } from 'react';
+
 import {
-    IonMenu,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonMenu,
     IonList,
     IonItem,
-    IonRouterOutlet,
-    IonButton,
     IonIcon,
-    IonMenuButton
+    IonRouterOutlet
 } from '@ionic/react';
 import { home, person, chatbubbles, settings } from 'ionicons/icons';
+import React from 'react';
 
-export const MenuExample = (props: any) => {
-
-    const menuRef = useRef<any>(null);
-
-    const openMenu = () => {
-        if (menuRef && menuRef.current) {
-            // menuRef.current.open();
-            menuRef.current.toggle();
-        }
-    }
-
+export const MainMenu = () => {
     return (
         <React.Fragment>
-            <IonMenu type="push" side="start" menuId="first" contentId="myMenuOutlet" ref={menuRef}>
+            <IonMenu type="reveal" side="start" menuId="first" contentId="myMenuOutlet">
                 <IonHeader>
                     <IonToolbar color="primary">
                         <IonTitle>My Menu</IonTitle>
@@ -56,17 +45,6 @@ export const MenuExample = (props: any) => {
             </IonMenu>
 
             <IonRouterOutlet id="myMenuOutlet"></IonRouterOutlet>
-
-            <IonHeader>
-                <IonToolbar>
-                    <IonMenuButton slot="start"></IonMenuButton>
-                    <IonTitle>My Menu</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent>
-                <IonButton expand="block" onClick={() => openMenu()}>Open Menu</IonButton>
-            </IonContent>
-
         </React.Fragment>
-    );
-};
+    )
+}

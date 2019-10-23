@@ -10,7 +10,6 @@ import React from 'react';
 import './Tab1.css';
 
 import { CardExample } from '../components/CardComponent';
-import { MenuExample } from '../components/MenuExample';
 
 const Tab1: React.FC = () => {
     return (
@@ -23,8 +22,6 @@ const Tab1: React.FC = () => {
             </IonHeader>
             <IonContent>
                 <CardExample />
-
-                <MenuExample />
             </IonContent>
         </IonPage>
     );

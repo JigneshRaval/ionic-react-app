@@ -47,19 +47,19 @@ export const MenuExampleForwardedRef = (props: any) => {
                 <IonContent>
                     <IonList>
                         <IonItem routerLink="/tab2">
-                            <IonIcon icon={home} />
+                            <IonIcon icon={home} slot="start" />
                             Home
                         </IonItem>
                         <IonItem>
-                            <IonIcon icon={person} />
+                            <IonIcon icon={person} slot="start" />
                             Profile
                         </IonItem>
                         <IonItem>
-                            <IonIcon icon={chatbubbles} />
+                            <IonIcon icon={chatbubbles} slot="start" />
                             Messages
                         </IonItem>
                         <IonItem>
-                            <IonIcon icon={settings} />
+                            <IonIcon icon={settings} slot="start" />
                             Settings
                         </IonItem>
                     </IonList>
