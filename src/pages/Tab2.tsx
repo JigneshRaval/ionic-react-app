@@ -1,5 +1,15 @@
 import React from 'react';
-import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+    IonContent,
+    IonHeader,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonMenuButton
+} from '@ionic/react';
 
 const Tab2: React.FC = () => {
     return (
@@ -7,6 +17,7 @@ const Tab2: React.FC = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Tab Two</IonTitle>
+                    <IonMenuButton slot="start" />
                 </IonToolbar>
             </IonHeader>
             <IonContent>

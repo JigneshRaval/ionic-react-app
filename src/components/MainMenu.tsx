@@ -1,4 +1,4 @@
-
+import React from 'react';
 import {
     IonContent,
     IonHeader,
@@ -8,43 +8,51 @@ import {
     IonList,
     IonItem,
     IonIcon,
-    IonRouterOutlet
+    IonMenuToggle,
+    IonLabel
 } from '@ionic/react';
 import { home, person, chatbubbles, settings } from 'ionicons/icons';
-import React from 'react';
 
-export const MainMenu = () => {
+interface AppPage {
+    title: string,
+    url: string,
+    icon: any
+}
+
+export const MainMenu = ({ disabled }: any) => {
+
+    const appPages: AppPage[] = [
+        { title: 'Home', url: '/home', icon: home },
+        { title: 'Profile', url: '/home', icon: person },
+        { title: 'Messages', url: '/home', icon: chatbubbles },
+        { title: 'Settings', url: '/home', icon: settings },
+    ];
+
     return (
         <React.Fragment>
-            <IonMenu type="reveal" side="start" menuId="first" contentId="myMenuOutlet">
+            <IonMenu menuId="first" contentId="myMenuOutlet" disabled={disabled}>
                 <IonHeader>
                     <IonToolbar color="primary">
-                        <IonTitle>My Menu</IonTitle>
+                        <IonTitle>Main Menu</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
                     <IonList>
-                        <IonItem routerLink="/tab2">
-                            <IonIcon icon={home} slot="start" />
-                            Home
-                        </IonItem>
-                        <IonItem>
-                            <IonIcon icon={person} slot="start" />
-                            Profile
-                        </IonItem>
-                        <IonItem>
-                            <IonIcon icon={chatbubbles} slot="start" />
-                            Messages
-                        </IonItem>
-                        <IonItem>
-                            <IonIcon icon={settings} slot="start" />
-                            Settings
-                        </IonItem>
+                        {
+                            appPages.map((appPage, index) => {
+                                return (
+                                    <IonMenuToggle key={index} auto-hide="false">
+                                        <IonItem routerLink={appPage.url}>
+                                            <IonIcon icon={appPage.icon} slot="start" />
+                                            <IonLabel>{appPage.title}</IonLabel>
+                                        </IonItem>
+                                    </IonMenuToggle>
+                                );
+                            })
+                        }
                     </IonList>
                 </IonContent>
             </IonMenu>
-
-            <IonRouterOutlet id="myMenuOutlet"></IonRouterOutlet>
         </React.Fragment>
     )
 }

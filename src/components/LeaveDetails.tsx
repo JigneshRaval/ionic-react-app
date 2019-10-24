@@ -60,34 +60,32 @@ const LeaveDetails: React.FC = ({ match }: any) => {
         }
     ];
 
-    const getDetail = leaveDetail[match.params.leaveType];
-
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/tab2" />
+                        <IonBackButton defaultHref="/home" />
                     </IonButtons>
-                    <IonTitle>Leave Detail: {match.params.leaveType}</IonTitle>
+                    <IonTitle>Leave Detail for {match.params.leaveType.toUpperCase()}</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent>
+            <IonContent class="ion-padding">
 
                 <IonCard>
                     <IonCardHeader>
-                        <IonCardSubtitle>Leave Details for</IonCardSubtitle>
-                        <IonCardTitle>{match.params.leaveType}</IonCardTitle>
+                        <IonCardSubtitle>Leave Details</IonCardSubtitle>
+                        <IonCardTitle>{match.params.leaveType.toUpperCase()}</IonCardTitle>
                     </IonCardHeader>
 
                     <IonCardContent>
                         {leaveDetail.map((detail: any) => (
                             detail.type === match.params.leaveType ? (
-                                <IonList>
-                                    {detail.balance.map((item: any) => (
+                                <IonList key={detail.id}>
+                                    {detail.balance.map((item: any, index: number) => (
 
-                                        <IonItem key={item.id}>
+                                        <IonItem key={index}>
                                             <IonLabel>{item.title}</IonLabel>
                                             <IonBadge slot="end">{item.balance}</IonBadge>
                                         </IonItem>
@@ -99,7 +97,7 @@ const LeaveDetails: React.FC = ({ match }: any) => {
                     </IonCardContent>
                 </IonCard>
 
-                <IonButton color="primary" expand="block">Apply for leave</IonButton>
+                <IonButton color="primary" expand="block" routerLink={`/details/${match.params.leaveType}/apply`}>Apply for leave</IonButton>
             </IonContent>
         </IonPage>
     );

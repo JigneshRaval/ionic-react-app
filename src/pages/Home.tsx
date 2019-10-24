@@ -7,24 +7,27 @@ import {
     IonMenuButton
 } from '@ionic/react';
 import React from 'react';
-import './Tab1.css';
+import './Home.css';
 
-import { CardExample } from '../components/CardComponent';
+import { LeavesSummary } from '../components/Leaves';
 
-const Tab1: React.FC = () => {
+const HomePage: React.FC = () => {
     return (
         <IonPage>
+
             <IonHeader>
                 <IonToolbar>
                     <IonMenuButton slot="start"></IonMenuButton>
-                    <IonTitle>Tab One</IonTitle>
+                    <IonTitle>Home</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
-                <CardExample />
+
+            <IonContent class="ion-padding">
+                <LeavesSummary />
             </IonContent>
+
         </IonPage>
     );
 };
 
-export default Tab1;
+export default HomePage;
