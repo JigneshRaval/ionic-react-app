@@ -1,5 +1,5 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Redirect, Route, useHistory } from 'react-router-dom';
 import {
     IonApp,
     IonIcon,
@@ -14,17 +14,24 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { apps, home, send } from 'ionicons/icons';
 
-import HomePage from './pages/Home';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 
 import './vendor';
 
+import LoginPage from './pages/Login';
+import HomePage from './pages/Home';
 import { MainMenu } from './components/MainMenu';
 import LeaveDetails from './components/LeaveDetails';
 import ApplyLeaveForm from './components/ApplyLeaveForm';
+import * as Users from './assets/data/leaves.json';
 
 const App: React.FC = (props) => {
+    const { data }: any = Users;
+
+    useEffect(() => {
+        console.log('Users :', data)
+    }, []);
 
     return (
         <IonApp>
@@ -36,7 +43,9 @@ const App: React.FC = (props) => {
 
                         <IonTabs>
                             <IonRouterOutlet>
-                                <Route path="/home" component={HomePage} exact={true} />
+                                <Route path="/" render={(props) => <HomePage users={data} {...props} />} exact={true} />
+                                <Route path="/login" component={LoginPage} exact={true} />
+                                <Route path="/home" render={(props) => <HomePage users={data} {...props} />} exact={true} />
                                 <Route path="/tab2" component={Tab2} exact={true} />
                                 <Route path="/details/:leaveType/apply" component={ApplyLeaveForm} />
                                 <Route path="/details/:leaveType" component={LeaveDetails} />

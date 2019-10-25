@@ -1,0 +1,356 @@
+{
+    "data": [
+        {
+            "username": "Hiren Patel",
+            "email": "hiren.patel@gmail.com",
+            "userId": "A001",
+            "password": "test1",
+            "leaveDetail": [
+                {
+                    "id": 1,
+                    "title": "GL",
+                    "type": "gl",
+                    "fullName": "General Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "PL",
+                    "type": "pl",
+                    "fullName": "Personal Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Floater",
+                    "type": "floater",
+                    "fullName": "Floater",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Comp Off",
+                    "type": "compOff",
+                    "fullName": "Complementary Off",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Paternity/Maternity Leave",
+                    "type": "PML",
+                    "fullName": "Paternity/Maternity Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": "NA"
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "LWP",
+                    "type": "LWP",
+                    "fullName": "Leave Without Pay",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": "NA"
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "username": "Manoj Tiwari",
+            "email": "manoj.tiwari@gmail.com",
+            "userId": "A002",
+            "password": "test123",
+            "leaveDetail": [
+                {
+                    "id": 1,
+                    "title": "GL",
+                    "type": "gl",
+                    "fullName": "General Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "PL",
+                    "type": "pl",
+                    "fullName": "Personal Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Floater",
+                    "type": "floater",
+                    "fullName": "Floater",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Comp Off",
+                    "type": "compOff",
+                    "fullName": "Complementary Off",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": 7
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 4
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 3
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 1
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0.5
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Paternity/Maternity Leave",
+                    "type": "PML",
+                    "fullName": "Paternity/Maternity Leave",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": "NA"
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "LWP",
+                    "type": "LWP",
+                    "fullName": "Leave Without Pay",
+                    "balance": [
+                        {
+                            "title": "Opening balance",
+                            "balance": "NA"
+                        },
+                        {
+                            "title": "Applied",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Approved",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Pending Approval",
+                            "balance": 0
+                        },
+                        {
+                            "title": "Total balance Till Date",
+                            "balance": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

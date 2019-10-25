@@ -26,6 +26,7 @@ export const MainMenu = ({ disabled }: any) => {
         { title: 'Profile', url: '/home', icon: person },
         { title: 'Messages', url: '/home', icon: chatbubbles },
         { title: 'Settings', url: '/home', icon: settings },
+        { title: 'Logout', url: '/login', icon: settings },
     ];
 
     return (

@@ -7,7 +7,7 @@ import {
     IonCardTitle,
 } from '@ionic/react';
 
-export const LeavesSummary: React.FC = () => {
+export const LeavesSummary = ({ users }: any) => {
 
     const leaves = [
         { id: 1, title: 'GL', type: 'gl', balance: 8, fullName: 'General Leave' },

@@ -6,12 +6,21 @@ import {
     IonToolbar,
     IonMenuButton
 } from '@ionic/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.css';
 
 import { LeavesSummary } from '../components/Leaves';
 
-const HomePage: React.FC = () => {
+const HomePage = ({ users, history }: any) => {
+
+    useEffect(() => {
+        let isLoggedIn = sessionStorage.getItem('loggedIn');
+        console.log('isLoggedIn 1 : ', typeof isLoggedIn);
+        if (isLoggedIn === 'false') {
+            history.push('/login');
+        }
+    }, []);
+
     return (
         <IonPage>
 
@@ -23,7 +32,7 @@ const HomePage: React.FC = () => {
             </IonHeader>
 
             <IonContent class="ion-padding">
-                <LeavesSummary />
+                <LeavesSummary users={users} />
             </IonContent>
 
         </IonPage>
