@@ -22,9 +22,11 @@ import {
 } from '@ionic/react';
 import { withRouter } from 'react-router-dom'
 
-const Details: React.FC = ({ history }: any) => {
+const ApplyLeaveForm: React.FC = ({ match, history }: any) => {
 
     const [isHalfDay, setIsHalfDay] = useState(false);
+
+    console.log('Details :', match, history);
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -55,7 +57,7 @@ const Details: React.FC = ({ history }: any) => {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/details" />
+                        <IonBackButton defaultHref={`/details/${match.params.leaveType}`} />
                     </IonButtons>
                     <IonTitle>Apply for leave</IonTitle>
                 </IonToolbar>
@@ -65,11 +67,13 @@ const Details: React.FC = ({ history }: any) => {
                 <form name="formLeaveRequest" id="formLeaveRequest" method="POST" onSubmit={handleSubmit} encType="multipart/form-data">
                     <IonItem>
                         <IonLabel position="floating">Leave Type</IonLabel>
-                        <IonSelect value="gl" okText="Okay" cancelText="Dismiss" name="selLeaveType" id="selLeaveType">
+                        <IonSelect value={match.params.leaveType} okText="Okay" cancelText="Dismiss" name="selLeaveType" id="selLeaveType">
                             <IonSelectOption value="gl">GL</IonSelectOption>
                             <IonSelectOption value="pl">PL</IonSelectOption>
                             <IonSelectOption value="floater">Floater</IonSelectOption>
                             <IonSelectOption value="compOff">Comp Off</IonSelectOption>
+                            <IonSelectOption value="PML">Paternity/Maternity Leave</IonSelectOption>
+                            <IonSelectOption value="LWP">Leave without pay</IonSelectOption>
                         </IonSelect>
                     </IonItem>
                     <IonList>
@@ -111,4 +115,4 @@ const Details: React.FC = ({ history }: any) => {
 };
 
 // export default Details;
-export default withRouter(Details);
+export default withRouter(ApplyLeaveForm);

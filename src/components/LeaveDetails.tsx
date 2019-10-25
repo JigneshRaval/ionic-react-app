@@ -57,6 +57,24 @@ const LeaveDetails: React.FC = ({ match }: any) => {
                 { title: 'Pending Approval', balance: 1 },
                 { title: 'Total Balance Till Date', balance: 0.5 }
             ]
+        },
+        {
+            id: 5, title: 'Paternity/Maternity Leave', type: 'PML', balance: [
+                { title: 'Opening Balance', balance: 'NA' },
+                { title: 'Applied', balance: 0 },
+                { title: 'Approved', balance: 0 },
+                { title: 'Pending Approval', balance: 0 },
+                { title: 'Total Balance Till Date', balance: 0 }
+            ]
+        },
+        {
+            id: 6, title: 'LWP', type: 'LWP', balance: [
+                { title: 'Opening Balance', balance: 'NA' },
+                { title: 'Applied', balance: 0 },
+                { title: 'Approved', balance: 0 },
+                { title: 'Pending Approval', balance: 0 },
+                { title: 'Total Balance Till Date', balance: 0 }
+            ]
         }
     ];
 

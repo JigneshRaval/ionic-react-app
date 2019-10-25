@@ -14,6 +14,8 @@ export const LeavesSummary: React.FC = () => {
         { id: 2, title: 'PL', type: 'pl', balance: 15, fullName: 'Personal Leave' },
         { id: 3, title: 'Floater', type: 'floater', balance: 2, fullName: 'Floater' },
         { id: 4, title: 'Comp Off', type: 'compOff', balance: 5, fullName: 'Complementary Off' },
+        { id: 5, title: 'Paternity/Maternity Leave', type: 'PML', balance: 0, fullName: 'Paternity/Maternity Leave' },
+        { id: 6, title: 'LWP', type: 'LWP', balance: 0, fullName: 'Leave Without Pay' },
     ];
 
     return (

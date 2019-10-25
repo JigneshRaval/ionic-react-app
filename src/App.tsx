@@ -22,7 +22,7 @@ import './vendor';
 
 import { MainMenu } from './components/MainMenu';
 import LeaveDetails from './components/LeaveDetails';
-import Details from './components/Details';
+import ApplyLeaveForm from './components/ApplyLeaveForm';
 
 const App: React.FC = (props) => {
 
@@ -38,7 +38,7 @@ const App: React.FC = (props) => {
                             <IonRouterOutlet>
                                 <Route path="/home" component={HomePage} exact={true} />
                                 <Route path="/tab2" component={Tab2} exact={true} />
-                                <Route path="/details/:leaveType/apply" component={Details} />
+                                <Route path="/details/:leaveType/apply" component={ApplyLeaveForm} />
                                 <Route path="/details/:leaveType" component={LeaveDetails} />
 
                                 {/* <Route path="/tab2/details" component={Details} /> */}
