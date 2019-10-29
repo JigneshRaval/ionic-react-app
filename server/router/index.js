@@ -2,11 +2,150 @@
 
 const routes = require('express').Router();
 const db = require('../db.config');
+const jwt = require('jsonwebtoken');
 
+// MOCKING DB just for test
+let users = [
+    {
+        _id: 1,
+        name: 'Hiren',
+        admin: true,
+        username: 'test',
+        password: 'test',
+        image: ''
+    },
+    {
+        _id: 2,
+        name: 'Lalit',
+        admin: false,
+        username: 'admin',
+        password: 'admin',
+        image: ''
+    }
+];
+
+// Generate Token using secret from process.env.JWT_SECRET
+// process.env.JWT_SECRET = 'keyboard cat 4 ever'
+function generateToken(user) {
+    //1. Don't use password and other sensitive fields
+    //2. Use fields that are useful in other parts of the
+    // app/collections/models
+    var u = {
+        name: user.name,
+        username: user.username,
+        admin: user.admin,
+        _id: user._id.toString(),
+        image: user.image
+    };
+
+    return token = jwt.sign(u, 'keyboard cat 4 ever', {
+        // expiresIn: 60 * 60 * 24 // expires in 24 hours
+        expiresIn: 2000 // expires in 2000 milliseconds
+    });
+}
 
 // GET /api
 routes.get('/', (request, response) => {
-    response.status(200).json({ message: 'Connected!' });
+    // res.header('Access-Control-Allow-Origin', '*');
+
+    let token = request.headers.token || null;
+    let user = users[0];
+    if (!token || token === 'null') {
+        return response.status(401).json({ message: 'Must pass token' });
+    }
+
+    // Check token that was passed by decoding token using secret
+    jwt.verify(token, 'keyboard cat 4 ever', function (err, user) {
+        console.log('Error : ', err);
+        if (err) throw new Error('Error in verifing token.');
+
+        response.status(200).send({
+            success: true,
+            error: null,
+            user: user,
+            token: token
+        });
+
+        //return user using the id from w/in JWTToken
+        // User.findById({
+        //     '_id': user._id
+        // }, function (err, user) {
+        //     if (err) throw err;
+        //     user = utils.getCleanUser(user);
+        //     //Note: you can renew token by creating new token(i.e.
+        //     //refresh it)w/ new expiration time at this point, but I’m
+        //     //passing the old token back.
+        //     // var token = utils.generateToken(user);
+        //     response.json({
+        //         user: user,
+        //         token: token
+        //     });
+        // });
+
+    });
+});
+
+// LOGIN ROUTE
+routes.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    // res.header('Access-Control-Allow-Origin', '*');
+
+    // Use your DB ORM logic here to find user and compare password
+    for (let user of users) { // I am using a simple array users which i made above
+        if (username === user.username && password === user.password /* Use your password hash checking logic here !*/) {
+            // If all credentials are correct do this
+            // jwt.sign(payload, secretOrPrivateKey, [options, callback])
+            // let token = jwt.sign({ id: user.id, username: user.username }, 'keyboard cat 4 ever', { expiresIn: 2000 }); // Sigining the token
+            let token = generateToken(user);
+            res.json({
+                success: true,
+                error: null,
+                token
+            });
+            break;
+        }
+        else {
+            res.status(401).json({
+                success: false,
+                token: null,
+                error: 'Username or password is incorrect'
+            });
+        }
+    }
+});
+
+routes.post('/signup', function (req, res, next) {
+    var body = req.body;
+
+    // var hash = bcrypt.hashSync(body.password.trim(), 10);
+
+    var user = {
+        name: body.name.trim(),
+        username: body.username.trim(),
+        email: body.email.trim(),
+        // password: hash,
+        password: body.password.trim(),
+        admin: false,
+        isEmailVerified: false
+    };
+
+    db.articles.insert(user, function (err, newDoc) {
+        // Callback is optional
+        // newDoc is the newly inserted document, including its _id
+        // newDoc has no key called notToBeSaved since its value was undefined
+        if (err) {
+            console.log('Error in creating new user : ', err);
+            return err
+        }
+        var token = utils.generateToken(user);
+
+        res.status(200).send({
+            message: 'New user created successfully.',
+            user: newDoc,
+            token: token
+        });
+
+    });
 });
 
 

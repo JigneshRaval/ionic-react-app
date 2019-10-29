@@ -3,25 +3,30 @@ const path = require('path'),
     app = express(),
     router = express.Router(),
     port = process.env.PORT || 3001;
-
+const jwt = require('jsonwebtoken');
 // console.log('process.argv :', process.argv);
 // console.log('process.env :', process.env, process.env.npm_package_config_myPort);
 
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const articleRoutes = require('./router/index');
-var cors = require('cors')
+// var cors = require('cors');
 // const bookmarkRoutes = require('../server/router/bookmarks.router');
 
 // Compress all the assets and server response
 const compression = require('compression');
-app.use(cors());
+// app.use(cors());
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+/* Options route used for preflight request to the login POST route (cors) */
+/* router.options("/*", (req, res, next) => {
+    res.header('access-control-allow-origin', '*');
+    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('access-control-allow-methods', 'POST');
+    // res.header('access-control-allow-headers', ' Accept, access-control-allow-origin, Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-type, Authorization');
+    // res.sendStatus(204);
     next();
-});
+}); */
 
 // compress all responses and files
 app.use(compression());
@@ -35,19 +40,22 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // let oneYear = 1 * 365 * 24 * 60 * 60 * 1000;
 // app.use('/', express.static(__dirname + '/public/', { maxAge: oneYear }));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header('access-control-allow-methods', 'POST');
+    res.header("Access-Control-Allow-Headers", "Accept, access-control-allow-origin, Content-Type, token, Origin, X-Requested-With");
+    next();
+});
+
+
 app.use('/api', articleRoutes);
 // app.use('/api', bookmarkRoutes);
 
-app.get('**', (req, res) => {
+/* app.get('**', (req, res) => {
     // res.sendFile(path.resolve(__dirname, '../public', './index.html'));
     res.json({ message: 'Hi' });
 });
-/* app.get('/articles', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
-app.get('/bookmarks', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-}); */
+ */
 
 // Handle 404 Error
 app.use(function (req, res) {

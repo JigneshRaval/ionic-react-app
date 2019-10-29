@@ -11,6 +11,8 @@ import {
     IonButton
 } from '@ionic/react';
 
+const API_URL = 'http://localhost:3001/api';
+
 const LoginPage: React.FC = ({ history }: any) => {
 
     const [error, setError] = useState({ error: false })
@@ -38,12 +40,34 @@ const LoginPage: React.FC = ({ history }: any) => {
             password: formData.get('txtPassword')
         };
 
-        if (!(formDataObj.username === 'Hiren Patel' && formDataObj.password === 'test1')) {
-            return setError({ error: true });
-        }
+        fetch(`${API_URL}/login`, {
+            method: 'POST',
+            body: JSON.stringify(formDataObj),
+            mode: 'cors',
+            // redirect: 'follow',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                // 'Access-Control-Allow-Origin': '*',
+                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            })
+        })
+            .then((response) => {
+                // If error then exit
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' + response.status);
+                    sessionStorage.removeItem('userToken')
+                    return;
+                }
 
-        sessionStorage.setItem('loggedIn', 'true');
-        history.push('/home');
+                // Examine the text in the response
+                return response.json();
+            }).then(data => {
+                if (data) {
+                    sessionStorage.setItem('userToken', data.token);
+                    history.push('/home');
+                }
+            });
+
     }
 
     return (
