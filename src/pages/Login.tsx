@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     IonHeader,
     IonPage,
@@ -10,17 +10,21 @@ import {
     IonInput,
     IonButton
 } from '@ionic/react';
-
-const API_URL = 'http://localhost:3001/api';
+import { IUrlOptions } from '../models/rest-api.model';
+import { RemoteService } from '../services/remote.service';
 
 const LoginPage: React.FC = ({ history }: any) => {
-
-    const [error, setError] = useState({ error: false })
+    const remoteService = new RemoteService();
+    const [error, setError] = useState({ error: false });
+    const loginForm = useRef<HTMLFormElement>(null)
 
     useEffect(() => {
-        let isLoggedIn = sessionStorage.getItem('loggedIn');
-        console.log('isLoggedIn : ', isLoggedIn);
-        if (isLoggedIn) {
+        let token = sessionStorage.getItem('userToken');
+        console.log('loginForm :', loginForm);
+        if (loginForm && loginForm.current) {
+            loginForm.current.reset();
+        }
+        if (token) {
             history.push('/home');
         } else {
             history.push('/login');
@@ -40,33 +44,19 @@ const LoginPage: React.FC = ({ history }: any) => {
             password: formData.get('txtPassword')
         };
 
-        fetch(`${API_URL}/login`, {
-            method: 'POST',
-            body: JSON.stringify(formDataObj),
-            mode: 'cors',
-            // redirect: 'follow',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                // 'Access-Control-Allow-Origin': '*',
-                // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-            })
-        })
-            .then((response) => {
-                // If error then exit
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' + response.status);
-                    sessionStorage.removeItem('userToken')
-                    return;
-                }
+        const options: IUrlOptions = {
+            endPoint: `login`,
+            restOfUrl: '',
+            isSecure: true,
+            contentType: 'application/json'
+        };
 
-                // Examine the text in the response
-                return response.json();
-            }).then(data => {
-                if (data) {
-                    sessionStorage.setItem('userToken', data.token);
-                    history.push('/home');
-                }
-            });
+        remoteService.request('POST', options, formDataObj).then((data) => {
+            if (data) {
+                sessionStorage.setItem('userToken', data.token);
+                history.push('/home');
+            }
+        });
 
     }
 
@@ -80,7 +70,7 @@ const LoginPage: React.FC = ({ history }: any) => {
             </IonHeader>
 
             <IonContent>
-                <form name="formLogin" id="formLogin" method="POST" onSubmit={handleSubmit} encType="multipart/form-data">
+                <form ref={loginForm} name="formLogin" id="formLogin" method="POST" onSubmit={handleSubmit} encType="multipart/form-data">
                     <IonItem>
                         <IonLabel position="floating">Username</IonLabel>
                         <IonInput placeholder="Username" type="text" name="txtUsername" id="txtUsername"></IonInput>

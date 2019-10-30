@@ -2,7 +2,7 @@ const path = require('path'),
     express = require('express'),
     app = express(),
     router = express.Router(),
-    port = process.env.PORT || 3001;
+    port = process.env.PORT || 3002;
 const jwt = require('jsonwebtoken');
 // console.log('process.argv :', process.argv);
 // console.log('process.env :', process.env, process.env.npm_package_config_myPort);
@@ -40,12 +40,23 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // let oneYear = 1 * 365 * 24 * 60 * 60 * 1000;
 // app.use('/', express.static(__dirname + '/public/', { maxAge: oneYear }));
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header('access-control-allow-methods', 'POST');
     res.header("Access-Control-Allow-Headers", "Accept, access-control-allow-origin, Content-Type, token, Origin, X-Requested-With");
     next();
-});
+}); */
+
+// CORS middleware
+// https://scotch.io/tutorials/vue-authentication-and-route-handling-using-vue-router
+const allowCrossDomain = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    next();
+}
+
+app.use(allowCrossDomain)
 
 
 app.use('/api', articleRoutes);
