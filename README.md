@@ -105,6 +105,8 @@ The CLI will now create your app and install all the dependencies. Once it is do
 ionic serve
 ```
 
+`http://localhost:8100/`
+
 Under the covers, the ionic serve command uses the Create React App (CRA) project to compile your app, start a dev server, and open your app in a new browser window.
 
 Once done, you will see your starter app up and running:
