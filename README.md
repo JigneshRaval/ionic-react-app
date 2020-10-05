@@ -1,5 +1,19 @@
 # ionic-react-app
 
+## A simple leave management app ( Currently in progress)
+
+### Mobile view
+
+![Image of App](./app_screenshots/Leave-Management-Main-Screen.png)
+
+![Image of App](./app_screenshots/Leave-Management-Detail-Screen-GL.png)
+
+### Table view
+
+![Image of App](./app_screenshots/Home-tablet-view.png)
+
+![Image of App](./app_screenshots/Apply-for-Leave-form.png)
+
 ## Announcing Ionic React
 
 > A great article on how to start with Ionic React v4.11 by Max Lynch. Visit https://ionicframework.com/blog/announcing-ionic-react/ for more detail
